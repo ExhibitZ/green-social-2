@@ -31,4 +31,6 @@ Run <code>php artisan migrate</code>
 
 Run <code>php artisan db:seed</code>
 
+Run <code>php artisan storage:link</code>
+
 Run <code>php artisan serve</code>

@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [UserPostController::class, 'index']);
+Route::get('/', function () {
+    return redirect()->route('posts.index');
+});
+
+Route::resource('posts', PostController::class)->only(['index', 'create', 'show', 'store', 'edit', 'update', 'destroy']);
