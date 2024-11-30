@@ -26,7 +26,7 @@
 
                 <div class="row">
                     <div class="col-12 text-end">
-                        <form action="{{ route('posts.edit', $post->id) }}" method="GET" style="display: inline;">
+                        <form action="{{ route('comments.edit', ['postId' => $post->id, 'commentId' => $comment->id]) }}" method="GET" style="display: inline;">
                             @csrf
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>

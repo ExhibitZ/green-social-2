@@ -22,3 +22,5 @@ Route::delete('/posts/{postId}', [PostController::class,'destroy'])->name('posts
 // comments routing
 Route::get('/posts/{postId}/comments/create', [CommentController::class,'create'])->name('comments.create');
 Route::post('/posts/{postId}/comments', [CommentController::class,'store'])->name('comments.store');
+Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::class,'edit'])->name('comments.edit');
+Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class,'update'])->name('comments.update');

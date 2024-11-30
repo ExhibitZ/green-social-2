@@ -27,4 +27,26 @@ class CommentController extends Controller
 
         return redirect()->route('posts.show', $postId)->with('success', 'Post created successfully.');
     }
+
+    public function edit(string $postId, string $commentId)
+    {
+        $comment = Comment::find($commentId);
+
+        return view('comments.edit', compact('postId', 'comment'));
+    }
+
+    public function update(Request $request, string $postId, string $commentId)
+    {
+        $request->validate([
+            'message' => 'required | string | max:2048', 
+        ]);
+
+        $comment = Comment::find($commentId);
+        $comment->message = $request->message;
+
+        $post = Post::find($postId);
+        $post->comments()->save($comment);
+
+        return redirect()->route('posts.show', $postId)->with('success','Comment Updated successfully.');
+    }
 }
