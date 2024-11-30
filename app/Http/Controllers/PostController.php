@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,10 +15,10 @@ class PostController extends Controller
         return view("posts.index", compact("posts"));
     }
 
-    public function show(string $id)
+    public function show(string $postId)
     {
-        $post = Post::find($id);
-        $comments = $post->comments()->paginate(10);
+        $post = Post::find($postId);
+        $comments = Comment::where('post_id', $postId)->orderBy("created_at", "desc")->paginate(10);
 
         return view('posts.show', compact('post', 'comments'));
     }
@@ -40,29 +41,29 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
-    public function edit(string $id)
+    public function edit(string $postId)
     {
-        $post = Post::find($id);
+        $post = Post::find($postId);
 
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $postId)
     {
         $request->validate([
             'message' => 'required | string | max:2048', 
         ]);
 
-        $post = Post::find($id);
+        $post = Post::find($postId);
         $post->message = $request->message;
         $post->save();
 
         return redirect()->route('posts.index')->with('success','Post Updated successfully.');
     }
 
-    public function destroy(string $id)
+    public function destroy(string $postId)
     {
-        Post::find($id)->delete();
+        Post::find($postId)->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }

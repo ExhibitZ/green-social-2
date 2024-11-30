@@ -11,12 +11,14 @@
         <p class="border rounded p-3 mb-5">{{ $post->message }}</p>
         <div class="row">
             <h3 class="col-3">Comments</h3>
-            <form class="col-3 offset-6 text-end" action="{{ route('posts.create') }}" method="GET">
+            <form class="col-3 offset-6 text-end" action="{{ route('comments.create', $post->id) }}" method="GET">
                 <button type="submit" class="btn btn-primary">Create Comment</button>
             </form>
         </div>
         <hr>
-
+        @if ($message = Session::get('success'))
+            <p class="text-success">{{ $message }}</p>
+        @endif
         @foreach ($comments as $comment)
             <div class="container mb-3 p-3 border rounded ">
                 <p>{{ $comment->message }}</p>
