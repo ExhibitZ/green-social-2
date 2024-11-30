@@ -16,7 +16,7 @@
         <h1 class="page-header">Green Social</h1>
     </div>
 
-    <div class="container">
+    <div class="container margin-top-add">
         <hr>
 
         @if ($message = Session::get('success'))
