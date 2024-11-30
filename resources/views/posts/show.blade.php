@@ -30,7 +30,7 @@
                             @csrf
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('comments.destroy', ['postId' => $post->id, 'commentId' => $comment->id]) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

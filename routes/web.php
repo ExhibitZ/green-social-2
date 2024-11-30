@@ -24,3 +24,4 @@ Route::get('/posts/{postId}/comments/create', [CommentController::class,'create'
 Route::post('/posts/{postId}/comments', [CommentController::class,'store'])->name('comments.store');
 Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::class,'edit'])->name('comments.edit');
 Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class,'update'])->name('comments.update');
+Route::delete('/posts/{postId}/comments/{commentId}', [CommentController::class,'destroy'])->name('comments.destroy');
