@@ -17,6 +17,9 @@
     </div>
 
     <div class="container margin-top-add">
+        <div class="row">
+            <h3 class="col-3">Posts</h3>
+        </div>
         <hr>
 
         @if ($message = Session::get('success'))
@@ -50,7 +53,10 @@
                         </div>
 
                         <div class="like-section mt-2">
-                            <i class="like-button fa fa-heart" id="like-{{ $post->id }}" data-post-id="{{ $post->id }}"></i>
+                            <i class="like-button fa fa-heart 
+                            @if ($post->like()->count() > 0)
+                                liked
+                            @endif" id="like-button-{{ $post->id }}" onclick="likesClick({{ $post->id }})"></i>
                             <span class="like-count" id="like-count-{{ $post->id }}">{{ $post->likes }}</span>
                         </div>
                     </div>

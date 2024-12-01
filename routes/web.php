@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,3 +26,6 @@ Route::post('/posts/{postId}/comments', [CommentController::class,'store'])->nam
 Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::class,'edit'])->name('comments.edit');
 Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class,'update'])->name('comments.update');
 Route::delete('/posts/{postId}/comments/{commentId}', [CommentController::class,'destroy'])->name('comments.destroy');
+
+// post_likes routing
+Route::post('/posts/{postId}/like', [PostLikeController::class,'like'])->name('posts.like');
