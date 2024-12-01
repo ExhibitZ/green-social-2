@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous defer"></script>
+    <script src="{{ asset('js/posts/show.js') }}"></script>
 </head>
 <body>
     <div class="container-fluid fixed-top bg-white ps-3 pt-2">
@@ -47,9 +48,13 @@
                             </form>
                         </div>
                     </div>
+
                     <div class="like-section mt-2">
-                        <i class="like-button fa fa-heart" id="like-{{ $post->id }}" data-post-id="{{ $post->id }}"></i>
-                        <span class="like-count" id="like-count-{{ $post->id }}">{{ $post->likes }}</span>
+                        <i class="like-button fa fa-heart 
+                        @if ($comment->like()->count() > 0)
+                            liked
+                        @endif" id="like-button-{{ $comment->id }}" onclick="likesClick({{ $post->id }}, {{ $comment->id }})"></i>
+                        <span class="like-count" id="like-count-{{ $comment->id }}">{{ $comment->likes }}</span>
                     </div>
                 </div>
             </div>

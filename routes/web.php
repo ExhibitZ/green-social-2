@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentLikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,9 @@ Route::get('/posts/{postId}/edit', [PostController::class,'edit'])->name('posts.
 Route::put('/posts/{postId}', [PostController::class,'update'])->name('posts.update');
 Route::delete('/posts/{postId}', [PostController::class,'destroy'])->name('posts.destroy');
 
+// post_likes routing
+Route::post('/posts/{postId}/like', [PostLikeController::class,'like'])->name('posts.like');
+
 // comments routing
 Route::get('/posts/{postId}/comments/create', [CommentController::class,'create'])->name('comments.create');
 Route::post('/posts/{postId}/comments', [CommentController::class,'store'])->name('comments.store');
@@ -27,5 +31,5 @@ Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::clas
 Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class,'update'])->name('comments.update');
 Route::delete('/posts/{postId}/comments/{commentId}', [CommentController::class,'destroy'])->name('comments.destroy');
 
-// post_likes routing
-Route::post('/posts/{postId}/like', [PostLikeController::class,'like'])->name('posts.like');
+// comment_likes routing
+ROute::post('/posts/{postId}/comments/{commentId}/like', [CommentLikeController::class,'like'])->name('comments.like');
