@@ -38,7 +38,6 @@ class PostController extends Controller
 
         $post = new Post();
         $post->message = $request->message;
-        $post->save();
         
         if (!is_null($request->image))
         {
@@ -47,8 +46,9 @@ class PostController extends Controller
             $file->storeAs('images', $filename, 'public');
 
             $post->image = $filename;
-            $post->save();
         }
+
+        $post->save();
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
@@ -59,15 +59,30 @@ class PostController extends Controller
 
         return view('posts.edit', compact('post'));
     }
-    
+
     public function update(Request $request, string $postId)
     {
         $request->validate([
-            'message' => 'required | string | max:2048'
+            'message' => 'required | string | max:2048',
+            'image' => 'image | max:2000'
         ]);
 
         $post = Post::find($postId);
         $post->message = $request->message;
+
+        if (!is_null($request->image))
+        {
+            if (!is_null($post->image))
+            {
+                File::delete(public_path('storage/images' . $post->image));
+            }
+            $file = $request->image;
+            $filename = $post->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('images', $filename, 'public');
+
+            $post->image = $filename;
+        }
+        
         $post->save();
 
         return redirect()->route('posts.index')->with('success','Post Updated successfully.');
