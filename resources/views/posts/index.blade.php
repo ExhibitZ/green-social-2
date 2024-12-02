@@ -33,6 +33,10 @@
                 <div class="post-card card mb-3">
                     <div class="card-body">
                         <p>{{ $post->message }}</p>
+                        @if(!is_null($post->image))
+                            <img src="{{ asset('storage/images/' . $post->image) }}" style="height:25vh">
+                            <br><br>
+                        @endif
 
                         <div class="row">
                             <form class="col-6" action="{{ route('posts.show', $post->id) }}" method="GET">

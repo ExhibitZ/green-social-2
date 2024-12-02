@@ -32,11 +32,22 @@ class PostController extends Controller
     {
         $request->validate([
             'message' => 'required | string | max:2048', 
+            'image' => 'image | max:2000'
         ]);
 
         $post = new Post();
         $post->message = $request->message;
         $post->save();
+        
+        if (!is_null($request->image))
+        {
+            $file = $request->image;
+            $filename = $post->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('images', $filename, 'public');
+
+            $post->image = $filename;
+            $post->save();
+        }
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
