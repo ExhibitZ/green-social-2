@@ -34,6 +34,10 @@
             <div class="post-card card mb-3">
                 <div class="card-body">
                     <p>{{ $comment->message }}</p>
+                    @if(!is_null($comment->image))
+                        <img src="{{ asset('storage/images/' . $comment->image) }}" style="height:25vh">
+                        <br><br>
+                    @endif
                     
                     <div class="row">
                         <div class="col-12 text-end">
