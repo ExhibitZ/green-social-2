@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use File;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -74,7 +75,13 @@ class PostController extends Controller
 
     public function destroy(string $postId)
     {
-        Post::find($postId)->delete();
+        $post = Post::find($postId);
+
+        if (!is_null($post->image))
+        {
+            File::delete(public_path('storage/images/' . $post->image));
+        }
+        $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
