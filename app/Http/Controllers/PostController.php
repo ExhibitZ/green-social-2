@@ -59,11 +59,11 @@ class PostController extends Controller
 
         return view('posts.edit', compact('post'));
     }
-
+    
     public function update(Request $request, string $postId)
     {
         $request->validate([
-            'message' => 'required | string | max:2048', 
+            'message' => 'required | string | max:2048'
         ]);
 
         $post = Post::find($postId);

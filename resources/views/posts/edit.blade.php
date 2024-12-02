@@ -12,12 +12,17 @@
             @foreach ($errors->all() as $error)
                 <p class="text-danger">{{ $error }}</p>
             @endforeach
-            <form action="{{ route('posts.update', $post->id) }}" method="POST">
+            <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
                     <label for="message" class="form-label">Enter Updated Message</label>
                     <textarea class="form-control" name="message" id="message" rows="3" required>{{ $post->message }}</textarea>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
