@@ -7,8 +7,7 @@ use App\Http\Controllers\PostLikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    // return redirect()->route('posts.index');
-    return view('auth.login');
+    return redirect()->route('posts.index');
 });
 
 // posts routing
