@@ -7,10 +7,9 @@ use App\Http\Controllers\PostLikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('posts.index');
+    // return redirect()->route('posts.index');
+    return view('auth.login');
 });
-
-// Route::resource('posts', PostController::class)->only(['index', 'create', 'show', 'store', 'edit', 'update', 'destroy']);
 
 // posts routing
 Route::get('/posts', [PostController::class,'index'])->name('posts.index');
