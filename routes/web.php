@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CommentLikeController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,6 +35,7 @@ Route::delete('/posts/{postId}/comments/{commentId}', [CommentController::class,
 Route::post('/posts/{postId}/comments/{commentId}/like', [CommentLikeController::class,'like'])->name('comments.like');
 
 // auth routing
-Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
-Route::post('/register', [UserController::class,'store'])->name('users.store');
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/register', [RegisterController::class, 'create'])->name('register.create');
+Route::post('/register', [RegisterController::class,'store'])->name('register.store');
+Route::get('/login', [LoginController::class, 'create'])->name('login.create');
+Route::post('/login', [LoginController::class,'store'])->name('login.store');

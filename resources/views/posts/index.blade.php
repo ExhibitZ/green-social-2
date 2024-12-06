@@ -18,10 +18,10 @@
         <div class="row">
             <h1 class="col-6 page-header">Green Social</h1>
             <div class="col-6 text-end">
-                <form style="display:inline;" action="{{ route('auth.register') }}" method="GET">
+                <form style="display:inline;" action="{{ route('register.create') }}" method="GET">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
-                <form style="display:inline;" action="{{ route('auth.login') }}" method="GET">
+                <form style="display:inline;" action="{{ route('login.create') }}" method="GET">
                     <button type="submit" class="btn btn-primary me-5">Login</button>
                 </form>
             </div>
