@@ -15,7 +15,17 @@
 </head>
 <body>
     <div class="container-fluid fixed-top bg-white ps-3 pt-2">
-        <h1 class="page-header">Green Social</h1>
+        <div class="row">
+            <h1 class="col-6 page-header">Green Social</h1>
+            <div class="col-6 text-end">
+                <form style="display:inline;" action="{{ route('auth.register') }}" method="GET">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                <form style="display:inline;" action="{{ route('auth.login') }}" method="GET">
+                    <button type="submit" class="btn btn-primary me-5">Login</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <div class="container margin-top-add">

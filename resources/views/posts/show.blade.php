@@ -15,12 +15,22 @@
 </head>
 <body>
     <div class="container-fluid fixed-top bg-white ps-3 pt-2">
-        <div class="col-2">
-            <a href="{{ route('posts.index') }}" style="text-decoration: none;">
-                <h1 class="page-header">
-                    Green Social
-                </h1>
-            </a>
+        <div class="row">
+            <div class="col-3">
+                <a href="{{ route('posts.index') }}" style="text-decoration: none;">
+                    <h1 class="page-header">
+                        Green Social
+                    </h1>
+                </a>
+            </div>
+            <div class="col-9 text-end">
+                <form style="display:inline;" action="{{ route('auth.register') }}" method="GET">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                <form style="display:inline;" action="{{ route('auth.login') }}" method="GET">
+                    <button type="submit" class="btn btn-primary me-5">Login</button>
+                </form>
+            </div>
         </div>
     </div>
 

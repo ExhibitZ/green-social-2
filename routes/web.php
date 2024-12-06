@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\CommentLikeController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentLikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,4 +31,9 @@ Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class,'up
 Route::delete('/posts/{postId}/comments/{commentId}', [CommentController::class,'destroy'])->name('comments.destroy');
 
 // comment_likes routing
-ROute::post('/posts/{postId}/comments/{commentId}/like', [CommentLikeController::class,'like'])->name('comments.like');
+Route::post('/posts/{postId}/comments/{commentId}/like', [CommentLikeController::class,'like'])->name('comments.like');
+
+// auth routing
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
