@@ -17,10 +17,11 @@
         <div class="row justify-content-center">
             <div class="col-6 pt-2 pb-2 bg-white shadow-sm border rounded">
                 <form action="">
+                    @csrf
                     <label for="name" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" id="email">
+                    <input type="email" class="form-control" name="email" id="email" required>
                     <label for="name" class="form-label">Password</label>
-                    <input type="password" class="form-control mb-3" name="name" id="name">
+                    <input type="password" class="form-control mb-3" name="password" id="password" required>
                     <input type="submit" class="btn btn-primary" value="Login">
                 </form>
             </div>

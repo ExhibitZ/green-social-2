@@ -16,15 +16,19 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-6 pt-2 pb-2 bg-white shadow-sm border rounded">
-                <form action="">
+                <form action="" method="POST">
+                    @csrf
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <input type="text" class="form-control" name="name" id="name" required>
                     <label for="name" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" id="email">
+                    <input type="email" class="form-control" name="email" id="email" required>
                     <label for="name" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="name" id="name">
+                    <input type="password" class="form-control" name="password" id="password" required>
                     <label for="name" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control mb-3" name="name" id="name">
+                    <input type="password" class="form-control mb-3" name="confirm-password" id="confirm-password" required>
+                    @foreach ($errors->all() as $error)
+                        <p class="text-danger">{{ $error }}</p>
+                    @endforeach
                     <input type="submit" class="btn btn-primary" value="Register">
                 </form>
             </div>
