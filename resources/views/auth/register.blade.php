@@ -11,12 +11,16 @@
 </head>
 <body style="background-color:#f3f4f5;">
     <div class="container text-center mt-5">
-        <p style="color: #28a745; font-size: 56px;">Green Social</p>
+        <a href="{{ route('posts.index') }}" style="text-decoration: none;">
+            <h1 class="page-header">
+                <p style="color: #28a745; font-size: 56px;">Green Social</p>
+            </h1>
+        </a>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-6 pt-2 pb-2 bg-white shadow-sm border rounded">
-                <form action="" method="POST">
+                <form action="{{ route('register.store') }}" method="POST">
                     @csrf
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="name" required>

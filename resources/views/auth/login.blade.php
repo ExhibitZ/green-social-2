@@ -11,17 +11,27 @@
 </head>
 <body style="background-color:#f3f4f5;">
     <div class="container text-center mt-5">
-        <p style="color: #28a745; font-size: 56px;">Green Social</p>
+        <a href="{{ route('posts.index') }}" style="text-decoration: none;">
+            <h1 class="page-header">
+                <p style="color: #28a745; font-size: 56px;">Green Social</p>
+            </h1>
+        </a>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-6 pt-2 pb-2 bg-white shadow-sm border rounded">
-                <form action="">
+                <form action="{{ route('login.store') }}" method="POST">
                     @csrf
                     <label for="name" class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" id="email" required>
                     <label for="name" class="form-label">Password</label>
                     <input type="password" class="form-control mb-3" name="password" id="password" required>
+                    @foreach ($errors->all() as $error)
+                        <p class="text-danger">{{ $error }}</p>
+                    @endforeach
+                    @if ($message = Session::get('error'))
+                        <p class="text-danger">{{ $message }}</p>
+                    @endif
                     <input type="submit" class="btn btn-primary" value="Login">
                 </form>
             </div>

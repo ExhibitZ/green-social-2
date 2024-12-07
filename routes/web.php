@@ -9,7 +9,8 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('posts.index');
+    // return redirect()->route('posts.index');
+    return redirect()->route('login.create');
 });
 
 // posts routing
