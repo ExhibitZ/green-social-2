@@ -36,7 +36,12 @@
 
     <div class="container margin-top-add">
         <h1 class="mb-4">Post</h1>
-        <p class="border rounded p-3 mb-5">{{ $post->message }}</p>
+        <div class="border rounded p-3 mb-5">
+            <p>{{ $post->message }}</p>
+            @if(!is_null($post->image))
+                <img src="{{ asset('storage/images/' . $post->image) }}" style="height:25vh">
+            @endif
+        </div>
         <div class="row">
             <h3 class="col-3">Comments</h3>
         </div>

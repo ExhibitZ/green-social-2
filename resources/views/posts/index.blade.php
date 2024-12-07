@@ -33,7 +33,7 @@
             <h3 class="col-3">Posts</h3>
         </div>
         <hr>
-
+        
         @if ($message = Session::get('success'))
             <p class="text-success">{{ $message }}</p>
         @endif
