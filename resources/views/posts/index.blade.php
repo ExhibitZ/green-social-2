@@ -18,12 +18,21 @@
         <div class="row">
             <h1 class="col-6 page-header">Green Social</h1>
             <div class="col-6 text-end">
+                @guest
                 <form style="display:inline;" action="{{ route('register.create') }}" method="GET">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
                 <form style="display:inline;" action="{{ route('login.create') }}" method="GET">
                     <button type="submit" class="btn btn-primary me-5">Login</button>
                 </form>
+                @endguest
+                @auth
+                <p class="me-3" style="display: inline;">{{ Auth::user()->name }}</p>
+                <form style="display:inline;" action="{{ route('login.destroy') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary me-5">Log out</button>
+                </form>
+                @endauth
             </div>
         </div>
     </div>

@@ -18,18 +18,25 @@
         <div class="row">
             <div class="col-3">
                 <a href="{{ route('posts.index') }}" style="text-decoration: none;">
-                    <h1 class="page-header">
-                        Green Social
-                    </h1>
+                    <h1 class="page-header">Green Social</h1>
                 </a>
             </div>
             <div class="col-9 text-end">
+                @guest
                 <form style="display:inline;" action="{{ route('register.create') }}" method="GET">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
                 <form style="display:inline;" action="{{ route('login.create') }}" method="GET">
                     <button type="submit" class="btn btn-primary me-5">Login</button>
                 </form>
+                @endguest
+                @auth
+                <p class="me-3" style="display: inline;">{{ Auth::user()->name }}</p>
+                <form style="display:inline;" action="{{ route('login.destroy') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary me-5">Log out</button>
+                </form>
+                @endauth
             </div>
         </div>
     </div>

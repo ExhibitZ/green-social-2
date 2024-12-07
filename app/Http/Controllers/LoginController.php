@@ -22,11 +22,17 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email','password')))
         {
             
-            return redirect()->route('posts.index');
+            return redirect()->back();
         }
         else
         {
             return back()->with('error','Invalid email or password');
         }
+    }
+
+    public function destroy()
+    {
+        Auth::logout();
+        return redirect()->back();
     }
 }
