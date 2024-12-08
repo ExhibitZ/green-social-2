@@ -10,7 +10,7 @@ class PostFactory extends Factory
 
     public function definition(): array
     {
-        $time = date("Y-m-d H:i:s");
+        $time = now();
 
         return [
             'message' => $this->faker->sentence(32),
