@@ -18,11 +18,10 @@ class LoginController extends Controller
             'email' => 'required | email | max:64',
             'password' => 'required | min:6 | max:64',
         ]);
-
+        
         if (Auth::attempt($request->only('email','password')))
         {
-            
-            return redirect()->back();
+            return redirect()->route('posts.index');
         }
         else
         {

@@ -65,6 +65,8 @@
                                 @csrf
                                 <button type="submit" class="btn btn-outline-primary btn-sm">View</button>
                             </form>
+                            @auth
+                            @if(Auth::user()->id == $post->user_id)
                             <div class="col-6 text-end">
                                  <form action="{{ route('posts.edit', $post->id) }}" method="GET" style="display: inline;">
                                  @csrf
@@ -74,8 +76,10 @@
                                  @csrf
                                  @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger btn-sm ms-2">Delete</button>
-                             </form>
+                                </form>
                             </div>
+                            @endif
+                            @endauth
                         </div>
 
                         <div class="like-section mt-2">

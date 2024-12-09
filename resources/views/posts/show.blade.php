@@ -66,7 +66,9 @@
                         <img src="{{ asset('storage/images/' . $comment->image) }}" style="height:25vh">
                         <br><br>
                     @endif
-                    
+
+                    @auth
+                    @if(Auth::user()->id == $post->user_id)
                     <div class="row">
                         <div class="col-12 text-end">
                             <form action="{{ route('comments.edit', ['postId' => $post->id, 'commentId' => $comment->id]) }}" method="GET" style="display: inline;">
@@ -80,7 +82,9 @@
                             </form>
                         </div>
                     </div>
-
+                    @endif
+                    @endauth
+                    
                     <div class="like-section mt-2">
                         <i class="like-button fa fa-heart 
                         @if ($comment->like()->count() > 0)
