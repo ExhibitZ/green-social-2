@@ -83,15 +83,21 @@
                         </div>
                     </div>
                     @endif
+                    @endauth
                     
                     <div class="like-section mt-2">
-                        <i class="like-button fa fa-heart 
+                        <i class="like-button fa fa-heart
+                        @auth
                         @if (($comment->like()->count() > 0) && (Auth::user()->comment_likes()->count() > 0))
                             liked
-                        @endif" id="like-button-{{ $comment->id }}" onclick="likesClick({{ $post->id }}, {{ $comment->id }})"></i>
+                        @endif
+                        @endauth" id="like-button-{{ $comment->id }}"
+                        @auth
+                            onclick="likesClick({{ $post->id }}, {{ $comment->id }})"
+                        @endauth></i>
                         <span class="like-count" id="like-count-{{ $comment->id }}">{{ $comment->likes }}</span>
                     </div>
-                    @endauth
+                    
                 </div>
             </div>
         @endforeach

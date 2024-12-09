@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\CommentLike;
-use App\Models\Post;
-use App\Models\PostLike;
 use Auth;
 use Illuminate\Http\Request;
 
