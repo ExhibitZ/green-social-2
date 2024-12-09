@@ -44,6 +44,7 @@
     <div class="container margin-top-add">
         <h1 class="mb-4">Post</h1>
         <div class="border rounded p-3 mb-5">
+            <p>{{ $post->user->name }}</p>
             <p>{{ $post->message }}</p>
             @if(!is_null($post->image))
                 <img src="{{ asset('storage/images/' . $post->image) }}" style="height:25vh">
@@ -59,6 +60,7 @@
         @foreach ($comments as $comment)
             <div class="post-card card mb-3">
                 <div class="card-body">
+                    <p>{{ $comment->user->name }}</p>
                     <p>{{ $comment->message }}</p>
                     @if(!is_null($comment->image))
                         <img src="{{ asset('storage/images/' . $comment->image) }}" style="height:25vh">

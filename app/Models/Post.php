@@ -13,6 +13,11 @@ class Post extends Model
     protected $table = 'posts';
     protected $fillable = ['message', 'likes', 'image'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
