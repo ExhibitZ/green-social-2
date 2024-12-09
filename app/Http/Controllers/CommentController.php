@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use Auth;
 use File;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class CommentController extends Controller
         if (!is_null($request->image))
         {
             $file = $request->image;
-            $filename = $postId . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $filename = Auth::user()->id . '_' . $postId . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('images', $filename, 'public');
 
             $comment->image = $filename;

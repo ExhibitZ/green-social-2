@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use Auth;
 use File;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class PostController extends Controller
         if (!is_null($request->image))
         {
             $file = $request->image;
-            $filename = $post->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $filename = Auth::user()->id . '_' . $post->id . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('images', $filename, 'public');
 
             $post->image = $filename;
