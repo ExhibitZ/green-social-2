@@ -68,7 +68,7 @@
                     @endif
 
                     @auth
-                    @if(Auth::user()->id == $post->user_id)
+                    @if(Auth::user()->id == $comment->user_id)
                     <div class="row">
                         <div class="col-12 text-end">
                             <form action="{{ route('comments.edit', ['postId' => $post->id, 'commentId' => $comment->id]) }}" method="GET" style="display: inline;">

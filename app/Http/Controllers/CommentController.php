@@ -22,6 +22,8 @@ class CommentController extends Controller
         ]);
 
         $comment = new Comment();
+        $comment->user_id = auth()->user()->id;
+        $comment->post_id = $postId;
         $comment->message = $request->message;
         
         if (!is_null($request->image))
@@ -33,8 +35,7 @@ class CommentController extends Controller
             $comment->image = $filename;
         }
 
-        $post = Post::find($postId);
-        $post->comments()->save($comment);
+        $comment->save();
 
         return redirect()->route('posts.show', $postId)->with('success', 'Post created successfully.');
     }

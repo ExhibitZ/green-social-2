@@ -37,6 +37,7 @@ class PostController extends Controller
         ]);
 
         $post = new Post();
+        $post->user_id = auth()->user()->id;
         $post->message = $request->message;
         
         if (!is_null($request->image))
