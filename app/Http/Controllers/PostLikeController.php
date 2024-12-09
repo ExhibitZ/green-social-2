@@ -17,7 +17,6 @@ class PostLikeController extends Controller
         if (!$likesExist)
         {
             // add likes
-            error_log('add likes');
             $like = new PostLike();
             $like->user_id = Auth::user()->id;
             $post->like()->save($like);
@@ -27,7 +26,6 @@ class PostLikeController extends Controller
         else
         {
             // remove likes
-            error_log('remove likes');
             $post->like()->delete();
             $post->likes = $post->likes - 1;
             $post->save();
