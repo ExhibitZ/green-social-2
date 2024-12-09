@@ -99,10 +99,13 @@
             {{ $comments->links('pagination::bootstrap-5') }}
         </div>
     </div>
+
+    @auth
     <form action="{{ route('comments.create', $post->id) }}" method="GET">
         <button type="submit" class="create-comment-btn">
             <i class="fas fa-plus"></i>
         </button>
     </form>
+    @endauth
 </body>
 </html>

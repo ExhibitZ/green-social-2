@@ -98,10 +98,12 @@
         @endif
     </div>
 
+    @auth
     <form action="{{ route('posts.create') }}" method="GET">
         <button type="submit" class="create-post-btn">
             <i class="fas fa-plus"></i>
         </button>
     </form>
+    @endauth
 </body>
 </html>
