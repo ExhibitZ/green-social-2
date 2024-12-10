@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentLikeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return redirect()->route('posts.index');
@@ -40,3 +41,8 @@ Route::post('/register', [RegisterController::class,'store'])->name('register.st
 Route::get('/login', [LoginController::class, 'create'])->name('login.create');
 Route::post('/login', [LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
+
+Route::get('/profile/{user_id}', [ProfileController::class, 'showProfile'])->name('profile.show');
+Route::get('/profile/{user_id}/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
+Route::put('/profile/{user_id}', [ProfileController::class, 'updateProfile'])->name('profile.update');
+
